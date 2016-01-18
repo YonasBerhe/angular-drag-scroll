@@ -1,4 +1,4 @@
-**Forked and changed for personal reasons. Don't plan on doing a pull request**
+**Forked and changed for personal reasons. Don't plan on making a pull request**
 
 # Angular Drag to Scroll
 Lightweight drag to scroll directive for AngularJS
