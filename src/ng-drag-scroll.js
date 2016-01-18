@@ -1,3 +1,4 @@
+console.log("drag scroll");
 (function () {
     'use strict';
 
@@ -21,9 +22,7 @@
                 var onDragEnd = $parse($attributes.onDragEnd);
                 var axis = $attributes.axis || false;
                 var startClientX;
-                var startClientY;
                 var lastClientX;
-                var lastClientY;
 
                 // Set event listeners
                 $element.on('mousedown', handleMouseDown);
@@ -63,7 +62,6 @@
                     // Set 'pushed' state
                     pushed = true;
                     lastClientX = startClientX = e.clientX;
-                    lastClientY = startClientY = e.clientY;
 
                     clearSelection();
 
@@ -78,7 +76,6 @@
                 function handleMouseUp (e) {
                     var selectable = ('drag-scroll-text' in e.target.attributes);
                     var withinXConstraints = (e.clientX >= (startClientX - allowedClickOffset) && e.clientX <= (startClientX + allowedClickOffset));
-                    var withinYConstraints = (e.clientY >= (startClientY - allowedClickOffset) && e.clientY <= (startClientY + allowedClickOffset));
 
                     // Set 'pushed' state
                     pushed = false;
@@ -105,9 +102,7 @@
                         if(!axis || axis === 'x') {
                             $element[0].scrollLeft -= (-lastClientX + (lastClientX = e.clientX));
                         }
-                        if(!axis || axis === 'y') {
-                            $element[0].scrollTop -= (-lastClientY + (lastClientY = e.clientY));
-                        }
+
                     }
 
                     e.preventDefault();
